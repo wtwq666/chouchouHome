@@ -58,8 +58,8 @@ export default function HealthWidget() {
   };
 
   return (
-    <div className="bg-white rounded-[1.8rem] p-5 h-full flex flex-col shadow-polaroid border border-pink-200/30 relative">
-      <img src="/assets/stickers.png" alt="" className="absolute -top-2 right-6 w-10 h-10 object-contain z-10 animate-pulse-soft" />
+    <div className="bg-white rounded-[1.4rem] sm:rounded-[1.8rem] p-3 sm:p-5 h-full flex flex-col shadow-polaroid border border-pink-200/30 relative">
+      <img src="/assets/stickers.png" alt="" className="absolute -top-2 right-4 sm:right-6 w-8 h-8 sm:w-10 sm:h-10 object-contain z-10 animate-pulse-soft hidden sm:block" />
 
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">

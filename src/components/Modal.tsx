@@ -49,13 +49,13 @@ export default function Modal({ children, title }: ModalProps) {
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[200] flex items-end sm:items-center justify-center p-0 sm:p-4"
+      className="fixed inset-0 z-[200] flex items-center justify-center p-3 sm:p-4"
       style={{ backgroundColor: "rgba(92, 64, 51, 0.2)" }}
       onClick={handleClose}
     >
       <div
         ref={panelRef}
-        className="bg-white rounded-t-[2rem] sm:rounded-[2rem] max-w-[48rem] w-full max-h-[min(92dvh,100%)] sm:max-h-[85vh] overflow-y-auto shadow-card-hover border-2 border-pink-200 relative pb-[env(safe-area-inset-bottom)]"
+        className="bg-white rounded-[1.6rem] sm:rounded-[2rem] max-w-[48rem] w-full max-h-[min(90dvh,100%)] sm:max-h-[85vh] overflow-y-auto shadow-card-hover border-2 border-pink-200 relative pb-[env(safe-area-inset-bottom)]"
         onClick={(e) => e.stopPropagation()}
       >
         <img src="/assets/washi-tape.png" alt="" className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-24 h-7 object-contain z-10 hidden sm:block" />

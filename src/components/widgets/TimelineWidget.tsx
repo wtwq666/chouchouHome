@@ -51,7 +51,7 @@ export default function TimelineWidget() {
 
   return (
     <div className="bg-white rounded-[1.8rem] p-3 sm:p-4 h-full flex flex-col shadow-polaroid border border-pink-200/30 relative">
-      <img src="/assets/cloud-bunny.png" alt="" className="absolute -top-3 left-4 w-9 h-9 object-contain z-10 animate-float" />
+      <img src="/assets/cloud-bunny.png" alt="" className="absolute -top-3 left-4 w-8 h-8 sm:w-9 sm:h-9 object-contain z-10 animate-float hidden sm:block" />
 
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
@@ -82,7 +82,7 @@ export default function TimelineWidget() {
             onClick={() => setDetailEvent(event)}
             className={`w-full flex items-center gap-3 p-2.5 rounded-xl transition-all duration-300 group text-left border-2 hover:bg-[#FFF8F0] border-transparent hover:border-pink-200/30`}
           >
-            <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-[0.8rem] overflow-hidden flex-shrink-0 border-2 border-pink-200/40 shadow-soft relative">
+            <div className="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-lg sm:rounded-[0.8rem] overflow-hidden flex-shrink-0 border-2 border-pink-200/40 shadow-soft relative">
               <RemoteImage src={event.coverImage} alt={event.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-400" />
               <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full border-2 border-white" style={{ backgroundColor: event.color }} />
             </div>

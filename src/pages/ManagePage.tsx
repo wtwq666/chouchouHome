@@ -17,12 +17,12 @@ import {
 import { notifySuccess } from "@/lib/notify";
 
 const tabs = [
-  { key: "basic", label: "基本信息", icon: Rabbit },
-  { key: "timeline", label: "成长足迹", icon: Clock },
-  { key: "weight", label: "体重记录", icon: Weight },
-  { key: "photos", label: "照片", icon: Image },
-  { key: "health", label: "健康", icon: HeartPulse },
-  { key: "detail", label: "详细信息", icon: Info },
+  { key: "basic", label: "基本信息", shortLabel: "基本", icon: Rabbit },
+  { key: "timeline", label: "成长足迹", shortLabel: "足迹", icon: Clock },
+  { key: "weight", label: "体重记录", shortLabel: "体重", icon: Weight },
+  { key: "photos", label: "照片", shortLabel: "照片", icon: Image },
+  { key: "health", label: "健康", shortLabel: "健康", icon: HeartPulse },
+  { key: "detail", label: "详细信息", shortLabel: "详情", icon: Info },
 ];
 
 export default function ManagePage() {
@@ -92,48 +92,54 @@ export default function ManagePage() {
   return (
     <div className="min-h-screen bg-cream">
       <Banner />
-      <main className="max-w-[1000px] mx-auto px-3 sm:px-4 lg:px-8 py-4 sm:py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
-        <div className="flex items-center gap-3 sm:gap-4 mb-5 sm:mb-6 flex-wrap">
-          <button type="button" onClick={() => navigate("/")} className="w-10 h-10 rounded-full border border-pink-light flex items-center justify-center hover:bg-pink-soft/20 transition-colors flex-shrink-0">
+      <main className="max-w-[1000px] mx-auto px-3 sm:px-4 lg:px-8 py-3 sm:py-6 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
+        <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-5">
+          <button type="button" onClick={() => navigate("/")} className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-pink-light flex items-center justify-center hover:bg-pink-soft/20 transition-colors flex-shrink-0">
             <ArrowLeft size={18} className="text-brown" />
           </button>
           <div className="flex-1 min-w-0">
-            <h2 className="text-[2.2rem] sm:text-[3rem] font-serif text-brown leading-tight">兔子管理</h2>
-            <p className="text-[1.2rem] sm:text-[1.3rem] text-brown-mid">管理所有兔子的资料、成长记录、健康档案</p>
+            <h2 className="text-[1.75rem] sm:text-[2.4rem] font-serif text-brown leading-tight">兔子管理</h2>
+            <p className="hidden sm:block text-[1.2rem] text-brown-mid mt-0.5">管理兔子的资料、成长记录与健康档案</p>
           </div>
           <button
             type="button"
             onClick={() => openModal("addBunny")}
-            className="w-full sm:w-auto h-11 px-6 rounded-full bg-brown text-white text-[1.4rem] font-medium hover:bg-brown-light transition-colors flex items-center justify-center gap-2 shadow-soft"
+            className="flex-shrink-0 h-9 w-9 sm:h-10 sm:w-auto sm:px-5 sm:gap-2 rounded-full bg-pink-300 text-white sm:bg-brown sm:hover:bg-brown-light transition-colors flex items-center justify-center shadow-soft"
+            aria-label="添加兔子"
           >
-            <Plus size={18} /> 添加兔子
+            <Plus size={18} />
+            <span className="hidden sm:inline text-[1.3rem] font-medium">添加兔子</span>
           </button>
         </div>
 
-        <div className="relative mb-4">
-          <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-brown-mid" />
+        <div className="relative mb-3 sm:mb-4">
+          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-brown-mid" />
           <input
             type="search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="搜索兔子名字、品种或备注…"
-            className="w-full h-11 pl-11 pr-4 rounded-xl border border-pink-light bg-white text-[1.3rem] text-brown placeholder:text-brown-mid/50 focus:border-pink-400 focus:outline-none"
+            placeholder="搜索名字、品种…"
+            className="w-full h-10 sm:h-11 pl-10 pr-3 rounded-xl border border-pink-light bg-white text-[1.25rem] sm:text-[1.3rem] text-brown placeholder:text-brown-mid/50 focus:border-pink-400 focus:outline-none"
           />
         </div>
 
-        <div className="flex gap-1 bg-white rounded-xl border border-pink-light p-1 mb-6 overflow-x-auto">
+        <div className="mobile-scroll-x flex gap-1.5 bg-white rounded-xl border border-pink-light p-1 mb-4 sm:mb-6 overflow-x-auto">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             return (
               <button
                 key={tab.key}
+                type="button"
                 onClick={() => setActiveTab(tab.key)}
-                className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-[1.3rem] font-medium whitespace-nowrap transition-all duration-200 ${
-                  activeTab === tab.key ? "bg-brown text-white" : "text-brown-mid hover:text-brown hover:bg-[#FFF8F0]/40"
+                className={`flex items-center gap-1 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-[1.15rem] sm:text-[1.25rem] font-medium whitespace-nowrap transition-all duration-200 flex-shrink-0 ${
+                  activeTab === tab.key
+                    ? "bg-pink-300 text-white shadow-sm"
+                    : "text-brown-mid hover:text-brown hover:bg-[#FFF8F0]/60"
                 }`}
               >
-                <Icon size={14} />
-                {tab.label}
+                <Icon size={14} className="flex-shrink-0" />
+                <span className="sm:hidden">{tab.shortLabel}</span>
+                <span className="hidden sm:inline">{tab.label}</span>
               </button>
             );
           })}
@@ -144,14 +150,14 @@ export default function ManagePage() {
         ) : (
           <div>
             {activeTab === "basic" && (
-              <BasicManage bunnies={filteredBunnies} onUpdate={updateBunny} onAddClick={() => openModal("addBunny")} />
+              <BasicManage bunnies={filteredBunnies} onUpdate={updateBunny} onAddClick={() => openModal("addBunny")} embedded />
             )}
             {activeTab === "timeline" && <TimelineManage bunnies={filteredBunnies} currentBunnyId={currentBunnyId} />}
             {activeTab === "weight" && <WeightManage bunnies={filteredBunnies} currentBunnyId={currentBunnyId} />}
             {activeTab === "photos" && <PhotosManage bunnies={filteredBunnies} currentBunnyId={currentBunnyId} />}
             {activeTab === "health" && <HealthManage bunnies={filteredBunnies} currentBunnyId={currentBunnyId} />}
             {activeTab === "detail" && (
-              <BasicManage bunnies={filteredBunnies} onUpdate={updateBunny} onAddClick={() => openModal("addBunny")} />
+              <BasicManage bunnies={filteredBunnies} onUpdate={updateBunny} onAddClick={() => openModal("addBunny")} embedded />
             )}
           </div>
         )}

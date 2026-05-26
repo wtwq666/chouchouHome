@@ -39,9 +39,8 @@ export default function BunnyInfoWidget() {
   return (
     <>
       {/* Polaroid card style */}
-      <div className="bg-white rounded-[1.6rem] p-4 h-full flex flex-col justify-center relative shadow-polaroid border border-pink-200/30">
-        {/* Washi tape decoration top */}
-        <img src="/assets/washi-tape.png" alt="" className="absolute -top-2 left-1/2 -translate-x-1/2 w-20 h-6 object-contain z-10" />
+      <div className="bg-white rounded-[1.4rem] sm:rounded-[1.6rem] p-3 sm:p-4 h-full flex flex-col justify-center relative shadow-polaroid border border-pink-200/30">
+        <img src="/assets/washi-tape.png" alt="" className="absolute -top-2 left-1/2 -translate-x-1/2 w-16 sm:w-20 h-5 sm:h-6 object-contain z-10 hidden sm:block" />
 
         {/* Info button */}
         <button
@@ -53,35 +52,37 @@ export default function BunnyInfoWidget() {
         </button>
 
         {/* Avatar with polaroid frame feel */}
-        <div className="flex items-center gap-3 mb-3 pr-8">
-          <div className="relative">
-            <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-[1.2rem] bg-white p-1.5 shadow-polaroid border border-pink-200/30">
+        <div className="flex items-center gap-2.5 sm:gap-3 mb-2 sm:mb-3 pr-7 sm:pr-8">
+          <div className="relative flex-shrink-0">
+            <div className="w-[4.8rem] h-[4.8rem] sm:w-32 sm:h-32 rounded-xl sm:rounded-[1.2rem] bg-white p-1 sm:p-1.5 shadow-polaroid border border-pink-200/30">
               <RemoteImage src={bunny.avatar} alt={bunny.name} className="w-full h-full rounded-lg object-cover" />
             </div>
-            <img src="/assets/bunny-cute.png" alt="" className="absolute -bottom-1 -right-2 w-6 h-6 object-contain animate-float-slow" />
+            <img src="/assets/bunny-cute.png" alt="" className="absolute -bottom-1 -right-1.5 w-5 h-5 sm:w-6 sm:h-6 object-contain animate-float-slow" />
           </div>
-          <div className="min-w-0">
-            <h3 className="text-[1.8rem] font-serif text-brown leading-tight">{bunny.name}</h3>
-            <p className="text-[1.1rem] text-brown-mid truncate">{bunny.breed}</p>
+          <div className="min-w-0 flex-1">
+            <h3 className="text-[1.5rem] sm:text-[1.8rem] font-serif text-brown leading-tight truncate">{bunny.name}</h3>
+            <p className="text-[1.05rem] sm:text-[1.1rem] text-brown-mid truncate">{bunny.breed}</p>
           </div>
         </div>
 
-        {/* Cute stat pills */}
-        <div className="grid grid-cols-3 gap-2">
-          <div className="bg-[#FFF8F0] rounded-xl py-2 px-1 text-center border border-pink-200/20 shadow-soft">
-            <Weight size={14} className="text-pink-400 mx-auto mb-0.5" />
-            <p className="text-[1.3rem] font-serif text-brown leading-tight">{latestWeight}g</p>
-            <p className="text-[0.85rem] text-brown-mid">体重</p>
+        <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
+          <div className="bg-[#FFF8F0] rounded-lg sm:rounded-xl py-1.5 sm:py-2 px-1 text-center border border-pink-200/20 shadow-soft min-w-0">
+            <Weight size={13} className="text-pink-400 mx-auto mb-0.5 sm:hidden" />
+            <Weight size={14} className="text-pink-400 mx-auto mb-0.5 hidden sm:block" />
+            <p className="text-[1.15rem] sm:text-[1.3rem] font-serif text-brown leading-tight truncate">{latestWeight}g</p>
+            <p className="text-[0.8rem] sm:text-[0.85rem] text-brown-mid">体重</p>
           </div>
-          <div className="bg-[#FFF8F0] rounded-xl py-2 px-1 text-center border border-pink-200/20 shadow-soft">
-            <Calendar size={14} className="text-pink-400 mx-auto mb-0.5" />
-            <p className="text-[1.3rem] font-serif text-brown leading-tight">{ageText}</p>
-            <p className="text-[0.85rem] text-brown-mid">年龄</p>
+          <div className="bg-[#FFF8F0] rounded-lg sm:rounded-xl py-1.5 sm:py-2 px-1 text-center border border-pink-200/20 shadow-soft min-w-0">
+            <Calendar size={13} className="text-pink-400 mx-auto mb-0.5 sm:hidden" />
+            <Calendar size={14} className="text-pink-400 mx-auto mb-0.5 hidden sm:block" />
+            <p className="text-[1.15rem] sm:text-[1.3rem] font-serif text-brown leading-tight truncate">{ageText}</p>
+            <p className="text-[0.8rem] sm:text-[0.85rem] text-brown-mid">年龄</p>
           </div>
-          <div className="bg-[#FFF8F0] rounded-xl py-2 px-1 text-center border border-pink-200/20 shadow-soft">
-            <Rabbit size={14} className="text-pink-400 mx-auto mb-0.5" />
-            <p className="text-[1.3rem] font-serif text-brown leading-tight">{bunny.birthDate.slice(5)}</p>
-            <p className="text-[0.85rem] text-brown-mid">生日</p>
+          <div className="bg-[#FFF8F0] rounded-lg sm:rounded-xl py-1.5 sm:py-2 px-1 text-center border border-pink-200/20 shadow-soft min-w-0">
+            <Rabbit size={13} className="text-pink-400 mx-auto mb-0.5 sm:hidden" />
+            <Rabbit size={14} className="text-pink-400 mx-auto mb-0.5 hidden sm:block" />
+            <p className="text-[1.15rem] sm:text-[1.3rem] font-serif text-brown leading-tight truncate">{bunny.birthDate.slice(5)}</p>
+            <p className="text-[0.8rem] sm:text-[0.85rem] text-brown-mid">生日</p>
           </div>
         </div>
       </div>

@@ -17,27 +17,27 @@ export default function DashboardPage() {
 
       <Banner />
 
-      <main className="relative z-10 max-w-[1920px] mx-auto px-3 sm:px-4 lg:px-8 py-4 lg:py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
-        <div className="flex flex-col gap-4 lg:grid lg:grid-cols-12 lg:gap-5 lg:h-[calc(100dvh-7rem)] lg:min-h-0">
-          <div className="lg:col-span-2 flex flex-col gap-4 min-h-0 lg:h-full">
-            <div className="flex-shrink-0 min-h-[11rem] sm:min-h-[12rem] lg:h-[28%] lg:min-h-0">
+      <main className="relative z-10 max-w-[1920px] mx-auto px-3 sm:px-4 lg:px-8 py-3 sm:py-4 lg:py-6 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
+        <div className="flex flex-col gap-3 sm:gap-4 lg:grid lg:grid-cols-12 lg:gap-5 lg:h-[calc(100dvh-7rem)] lg:min-h-0">
+          <div className="lg:col-span-2 flex flex-col gap-3 sm:gap-4 min-h-0 lg:h-full">
+            <div className="flex-shrink-0 lg:h-[28%] lg:min-h-0">
               <BunnyInfoWidget />
             </div>
-            <div className="min-h-[16rem] sm:min-h-[18rem] lg:flex-1 lg:min-h-0">
+            <div className="min-h-[14rem] sm:min-h-[16rem] lg:flex-1 lg:min-h-0">
               <TimelineWidget />
             </div>
           </div>
 
-          <div className="lg:col-span-5 flex flex-col gap-4 min-h-0 lg:h-full">
-            <div className="min-h-[14rem] sm:min-h-[16rem] lg:flex-[1.5] lg:min-h-0">
+          <div className="lg:col-span-5 flex flex-col gap-3 sm:gap-4 min-h-0 lg:h-full">
+            <div className="min-h-[12rem] sm:min-h-[14rem] lg:flex-[1.5] lg:min-h-0">
               <WeightWidget />
             </div>
-            <div className="min-h-[12rem] sm:min-h-[14rem] lg:flex-1 lg:min-h-0">
+            <div className="min-h-[10rem] sm:min-h-[12rem] lg:flex-1 lg:min-h-0">
               <HealthWidget />
             </div>
           </div>
 
-          <div className="min-h-[22rem] sm:min-h-[24rem] lg:col-span-5 lg:h-full lg:min-h-0">
+          <div className="min-h-[18rem] sm:min-h-[20rem] lg:col-span-5 lg:h-full lg:min-h-0">
             <PhotosWidget />
           </div>
         </div>

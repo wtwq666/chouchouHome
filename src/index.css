@@ -39,7 +39,17 @@
     html { font-size: 54%; }
   }
   @media (max-width: 479px) {
-    html { font-size: 50%; }
+    html { font-size: 52%; }
+  }
+
+  @media (max-width: 767px) {
+    .mobile-scroll-x {
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .mobile-scroll-x::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   body {

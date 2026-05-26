@@ -104,7 +104,7 @@ export default function WeightWidget() {
           </select>
         </div>
       </div>
-      <div className="flex-1 min-h-[12rem] sm:min-h-[14rem] lg:min-h-0">
+      <div className="flex-1 min-h-[10rem] sm:min-h-[12rem] lg:min-h-0 max-h-[14rem] sm:max-h-none">
         <Line data={chartData} options={options} />
       </div>
     </div>

@@ -46,19 +46,19 @@ export default function Banner() {
     <header className="sticky top-0 z-[100] bg-[#FFF8F0]/95 backdrop-blur-xl rounded-b-2xl lg:rounded-b-[2rem] shadow-soft border-b-2 border-pink-300/30 pt-[env(safe-area-inset-top)]">
       <div className="h-1 w-full bg-pink-300/40 rounded-t-2xl lg:rounded-t-[2rem] hidden lg:block" />
 
-      <div className="max-w-[1920px] mx-auto px-3 sm:px-4 lg:px-8 py-3 lg:py-0 lg:h-16 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between lg:gap-4">
+      <div className="max-w-[1920px] mx-auto px-3 sm:px-4 lg:px-8 py-2 sm:py-3 lg:py-0 lg:h-16 flex flex-col gap-2 sm:gap-3 lg:flex-row lg:items-center lg:justify-between lg:gap-4">
         {/* 顶栏：Logo + 兔子切换 */}
         <div className="flex items-center justify-between gap-2 min-w-0">
           <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             <div className="relative flex-shrink-0">
-              <img src="/assets/bunny-avatar.png" alt="" className="w-9 h-9 sm:w-11 sm:h-11 rounded-full object-contain" />
-              <img src="/assets/paw-heart.png" alt="" className="absolute -bottom-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 object-contain" />
+              <img src="/assets/bunny-avatar.png" alt="" className="w-8 h-8 sm:w-11 sm:h-11 rounded-full object-contain" />
+              <img src="/assets/paw-heart.png" alt="" className="absolute -bottom-1 -right-1 w-3.5 h-3.5 sm:w-5 sm:h-5 object-contain" />
             </div>
             <div className="min-w-0">
-              <h1 className="text-[1.8rem] sm:text-[2.2rem] font-serif text-brown leading-tight truncate">
+              <h1 className="text-[1.65rem] sm:text-[2.2rem] font-serif text-brown leading-tight truncate">
                 臭臭的家
               </h1>
-              <p className="text-[0.95rem] sm:text-[1rem] text-brown-mid truncate">小兔成长相册 ♥</p>
+              <p className="hidden sm:block text-[1rem] text-brown-mid truncate">小兔成长相册 ♥</p>
             </div>
           </div>
 
@@ -79,7 +79,7 @@ export default function Banner() {
                 <button
                   type="button"
                   onClick={() => setBunnyMenuOpen((o) => !o)}
-                  className="flex items-center gap-2 bg-white/70 rounded-full pl-1.5 pr-3 py-1 border-2 border-pink-200/50 shadow-soft max-w-[11rem] sm:max-w-none"
+                  className="flex items-center gap-1.5 bg-white/70 rounded-full pl-1 pr-2.5 py-0.5 sm:pl-1.5 sm:pr-3 sm:py-1 border-2 border-pink-200/50 shadow-soft max-w-[9.5rem] sm:max-w-none"
                   aria-expanded={bunnyMenuOpen}
                   aria-haspopup="listbox"
                 >
@@ -88,9 +88,9 @@ export default function Banner() {
                       <RemoteImage
                         src={currentBunny.avatar}
                         alt={currentBunny.name}
-                        className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-pink-300"
+                        className="w-8 h-8 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-pink-300"
                       />
-                      <span className="text-[1.25rem] sm:text-[1.4rem] font-medium text-brown truncate max-w-[5rem] sm:max-w-[8rem]">
+                      <span className="text-[1.15rem] sm:text-[1.4rem] font-medium text-brown truncate max-w-[4.5rem] sm:max-w-[8rem]">
                         {currentBunny.name}
                       </span>
                       <ChevronDown size={14} className={`text-pink-400 flex-shrink-0 transition-transform ${bunnyMenuOpen ? "rotate-180" : ""}`} />
@@ -145,7 +145,7 @@ export default function Banner() {
         </div>
 
         {/* 导航 */}
-        <nav className="flex items-center gap-1.5 sm:gap-2 bg-white/70 rounded-full p-1 border-2 border-pink-200/50 shadow-soft w-full lg:w-auto">
+        <nav className="flex items-center gap-1 sm:gap-2 bg-white/70 rounded-full p-0.5 sm:p-1 border-2 border-pink-200/50 shadow-soft w-full lg:w-auto">
           {navLinks.map((link) => {
             const active = (link.href === "/" && isHome) || (link.href === "/manage" && !isHome);
             return (
@@ -153,7 +153,7 @@ export default function Banner() {
                 key={link.href}
                 type="button"
                 onClick={() => navigate(link.href)}
-                className={`flex-1 lg:flex-none flex items-center justify-center gap-1.5 px-3 sm:px-6 py-2.5 rounded-full text-[1.2rem] sm:text-[1.3rem] font-medium transition-all ${
+                className={`flex-1 lg:flex-none flex items-center justify-center gap-1 px-3 sm:px-6 py-2 sm:py-2.5 rounded-full text-[1.15rem] sm:text-[1.3rem] font-medium transition-all ${
                   active ? "bg-pink-300 text-white shadow-tape" : "text-brown-mid hover:bg-pink-200/30 hover:text-brown"
                 }`}
               >

@@ -1,7 +1,8 @@
 import RemoteImage from "@/components/RemoteImage";
 import EmptyBunniesPrompt from "@/components/EmptyBunniesPrompt";
 import PhotoLightbox from "@/components/PhotoLightbox";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import { useBunnies, useCurrentBunnyData } from "@/store/useStore";
 import { Clock, ChevronRight, X } from "lucide-react";
 import CategoryTag from "@/components/CategoryTag";
@@ -16,6 +17,15 @@ export default function TimelineWidget() {
   >(null);
   const [lightboxImages, setLightboxImages] = useState<string[]>([]);
   const [lightboxIdx, setLightboxIdx] = useState(0);
+
+  useEffect(() => {
+    if (!detailEvent) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [detailEvent]);
 
   if (bunnies.length === 0) {
     return (
@@ -92,17 +102,17 @@ export default function TimelineWidget() {
         ))}
       </div>
 
-      {/* ===== 朋友圈详情弹窗 ===== */}
-      {detailEvent && (
+      {/* ===== 朋友圈详情弹窗（viewport 居中） ===== */}
+      {detailEvent && createPortal(
         <div
-          className="fixed inset-0 z-[200] flex items-end sm:items-start justify-center p-0 sm:p-4 overflow-y-auto bg-black/40"
+          className="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/40 pt-[max(1rem,env(safe-area-inset-top))] pb-[max(1rem,env(safe-area-inset-bottom))]"
           onClick={() => setDetailEvent(null)}
         >
           <div
-            className="bg-white rounded-t-2xl sm:rounded-2xl max-w-[60rem] w-full sm:mt-8 mb-0 sm:mb-8 max-h-[92dvh] overflow-y-auto shadow-card-hover relative pb-[env(safe-area-inset-bottom)]"
+            className="bg-white rounded-2xl max-w-[60rem] w-full max-h-[min(90dvh,100%)] overflow-y-auto shadow-card-hover relative my-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex flex-wrap items-start gap-3 p-4 sm:p-5 pb-3 sticky top-0 bg-white z-10 border-b border-pink-100 sm:border-0">
+            <div className="flex flex-wrap items-start gap-3 p-4 sm:p-5 pb-3 sticky top-0 bg-white z-10 border-b border-pink-100">
               <RemoteImage src={bunny.avatar} alt={bunny.name} className="w-16 h-16 sm:w-24 sm:h-24 rounded-xl object-cover border border-pink-200 flex-shrink-0" />
               <div className="flex-1 min-w-[8rem]">
                 <p className="text-[1.5rem] sm:text-[1.6rem] font-medium text-brown">{bunny.name}</p>
@@ -141,7 +151,8 @@ export default function TimelineWidget() {
               )}
             </div>
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
 
       <PhotoLightbox
